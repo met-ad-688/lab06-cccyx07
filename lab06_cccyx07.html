@@ -154,8 +154,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/03/23 20:33:29 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-                                                                                25/03/23 20:33:45 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+25/03/23 21:30:40 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+                                                                                25/03/23 21:31:02 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -371,10 +371,10 @@ only showing top 5 rows
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'SALARY_FROM'</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df1[df1[<span class="st">'SALARY_FROM'</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.select(<span class="st">"EMPLOYMENT_TYPE_NAME"</span>, <span class="st">"SALARY_FROM"</span>).toPandas()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(pdf, x<span class="op">=</span><span class="st">"EMPLOYMENT_TYPE_NAME"</span>, y<span class="op">=</span><span class="st">"SALARY_FROM"</span>, title<span class="op">=</span><span class="st">"Salary Distribution by Employment Type"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#636EFA"</span>])</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font_family<span class="op">=</span><span class="st">"Arial"</span>, title_font_size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>figa <span class="op">=</span> px.box(pdf, x<span class="op">=</span><span class="st">"EMPLOYMENT_TYPE_NAME"</span>, y<span class="op">=</span><span class="st">"SALARY_FROM"</span>, title<span class="op">=</span><span class="st">"Salary Distribution by Employment Type"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#636EFA"</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>figa.update_layout(font_family<span class="op">=</span><span class="st">"Arial"</span>, title_font_size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>figa.show()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>figa.write_image(<span class="st">"output/figurea.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -382,7 +382,7 @@ only showing top 5 rows
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Salary Distribution by Employment Type</a></p>
+<p><a href="output/figurea.svg">Salary Distribution by Employment Type</a></p>
 <p>Full-time jobs (&gt;32 hours) have the highest median salary. Part-time roles (&lt;32 hours) show lower and more consistent pay.</p>
 </section>
 <section id="salary-distribution-by-industry" class="level1" data-number="2">
@@ -411,10 +411,10 @@ only showing top 5 rows
 <div id="cell-10" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 2nd question here</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.select(<span class="st">"NAICS2_NAME"</span>, <span class="st">"SALARY_FROM"</span>).toPandas()</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(pdf, x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"SALARY_FROM"</span>, title<span class="op">=</span><span class="st">"Salary Distribution by Salary"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#EF553B"</span>])</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>fig.update_layout(font_family<span class="op">=</span><span class="st">"Times New Roman"</span>, title_font_size<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>figb <span class="op">=</span> px.box(pdf, x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"SALARY_FROM"</span>, title<span class="op">=</span><span class="st">"Salary Distribution by Salary"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#EF553B"</span>])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>figb.update_layout(font_family<span class="op">=</span><span class="st">"Times New Roman"</span>, title_font_size<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>figb.show()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>figb.write_image(<span class="st">"output/figureb.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -422,7 +422,7 @@ only showing top 5 rows
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Salary Distribution by Industry</a></p>
+<p><a href="output/figureb.svg">Salary Distribution by Industry</a></p>
 <p>Salaries vary widely across industries, with Public Administration and Manufacturing showing some of the highest upper ranges. Accommodation and Food Services and Arts &amp; Entertainment have the lowest median salaries and tighter distributions.</p>
 </section>
 <section id="job-posting-trends-over-time" class="level1" data-number="3">
@@ -450,7 +450,7 @@ only showing top 5 rows
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df_posted <span class="op">=</span> df1.groupBy(<span class="st">"POSTED"</span>).count().orderBy(<span class="st">"POSTED"</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df_posted.toPandas()</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.line(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>figc <span class="op">=</span> px.line(</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    pdf,</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"POSTED"</span>,</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"count"</span>,</span>
@@ -460,14 +460,14 @@ only showing top 5 rows
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">"#00CC96"</span>]</span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>figc.update_layout(</span>
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    font_family<span class="op">=</span><span class="st">"Verdana"</span>,</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    title_font_size<span class="op">=</span><span class="dv">14</span>,</span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"POSTED"</span>,</span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"Number of Job Postings"</span></span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>figc.show()</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>figc.write_image(<span class="st">"output/figurec.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -475,7 +475,7 @@ only showing top 5 rows
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Job Postings Trend Over Time</a></p>
+<p><a href="output/figurec.svg">Job Postings Trend Over Time</a></p>
 <p>Job postings fluctuate frequently, with noticeable peaks and drops across the observed months.<br>
 There is no clear upward or downward trend, suggesting a dynamic job market with short-term variability.</p>
 </section>
@@ -503,17 +503,17 @@ There is no clear upward or downward trend, suggesting a dynamic job market with
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 4th question here</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.groupBy(<span class="st">"TITLE_NAME"</span>).count().orderBy(<span class="st">"count"</span>, ascending<span class="op">=</span><span class="va">False</span>).limit(<span class="dv">10</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.toPandas()</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(pdf, x<span class="op">=</span><span class="st">"TITLE_NAME"</span>, y<span class="op">=</span><span class="st">"count"</span>, title<span class="op">=</span><span class="st">"Top 10 Job Titles by Count"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#AB63FA"</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>figd <span class="op">=</span> px.bar(pdf, x<span class="op">=</span><span class="st">"TITLE_NAME"</span>, y<span class="op">=</span><span class="st">"count"</span>, title<span class="op">=</span><span class="st">"Top 10 Job Titles by Count"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#AB63FA"</span>]</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>figd.update_layout(</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    font_family<span class="op">=</span><span class="st">"Helvetica"</span>,</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    title_font_size<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"Job Title"</span>,</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"Job Count"</span>,</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">"#F9F9F9"</span>,</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>figd.show()</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>figd.write_image(<span class="st">"output/figured.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -521,7 +521,8 @@ There is no clear upward or downward trend, suggesting a dynamic job market with
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Top 10 Job Titles by Count</a></p>
+<p><a href="output/figured.svg">Top 10 Job Titles by Count</a></p>
+<p><a href="output/figured.svg">Top 10 Job Titles by Count</a></p>
 <p>“Data Analysts” is the most frequently posted job title by a large margin. The remaining top titles have significantly lower counts, showing a steep drop in demand beyond the top role.</p>
 </section>
 <section id="remote-vs-on-site-job-postings" class="level1" data-number="5">
@@ -543,11 +544,11 @@ There is no clear upward or downward trend, suggesting a dynamic job market with
 </ul></li>
 <li><strong>Explanation:</strong> Write two sentences about what the graph reveals.</li>
 </ul>
-<div id="cell-22" class="cell" data-execution_count="7">
+<div id="cell-23" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 5th question here</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.groupBy(<span class="st">"REMOTE_TYPE_NAME"</span>).count()</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.toPandas()</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.pie(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>fige <span class="op">=</span> px.pie(</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    pdf,</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span><span class="st">"REMOTE_TYPE_NAME"</span>,</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">"count"</span>,</span>
@@ -555,8 +556,8 @@ There is no clear upward or downward trend, suggesting a dynamic job market with
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">"#FFC0CB"</span>, <span class="st">"#FF69B4"</span>, <span class="st">"#FF1493"</span>],</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    template<span class="op">=</span><span class="st">"nike_light_pink"</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>fige.show()</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>fige.write_image(<span class="st">"output/figuree.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -564,7 +565,7 @@ There is no clear upward or downward trend, suggesting a dynamic job market with
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Remote vs Onsite Job Postings</a></p>
+<p><a href="output/figuree.svg">Remote vs Onsite Job Postings</a></p>
 <p>The majority of job postings do not specify remote status, as shown by the dominant “[None]” category.<br>
 Among the classified postings, Remote and Hybrid Remote roles make up a small but visible portion, indicating limited remote opportunities.</p>
 <p>Most job postings are labeled as None, indicating missing or unspecified remote status. Among the defined categories, Remote and Hybrid Remote together make up a small but notable portion, showing limited adoption of flexible work options.</p>
@@ -590,7 +591,7 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 </ul></li>
 <li><strong>Explanation:</strong> Write two sentences about what the graph reveals.</li>
 </ul>
-<div id="cell-27" class="cell" data-execution_count="8">
+<div id="cell-28" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 6th question here</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> split, explode</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df_array <span class="op">=</span> df.withColumn(<span class="st">"SKILLS_ARRAY"</span>, split(col(<span class="st">"SKILLS"</span>), <span class="st">","</span>))</span>
@@ -600,14 +601,14 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    .agg(count(<span class="st">"*"</span>).alias(<span class="st">"Skill_Count"</span>))</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.toPandas()</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(pdf, x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"Skill_Count"</span>, color<span class="op">=</span><span class="st">"SKILL"</span>, title<span class="op">=</span><span class="st">"Skill Demand Analysis by Industry (Stacked Bar Chart)"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>figf <span class="op">=</span> px.bar(pdf, x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"Skill_Count"</span>, color<span class="op">=</span><span class="st">"SKILL"</span>, title<span class="op">=</span><span class="st">"Skill Demand Analysis by Industry (Stacked Bar Chart)"</span>,</span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    barmode<span class="op">=</span><span class="st">"stack"</span>, color_discrete_sequence<span class="op">=</span>[<span class="st">"#FFB6C1"</span>, <span class="st">"#FF69B4"</span>, <span class="st">"#FFC0CB"</span>, <span class="st">"#F8BBD0"</span>, <span class="st">"#E91E63"</span>]</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>fig.update_layout( font_family<span class="op">=</span><span class="st">"Times New Romans"</span>, title_font_size<span class="op">=</span><span class="dv">20</span>, title_font_color<span class="op">=</span><span class="st">"darkred"</span>, xaxis_title<span class="op">=</span><span class="st">"Industry (NAICS2_NAME)"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>figf.update_layout( font_family<span class="op">=</span><span class="st">"Times New Romans"</span>, title_font_size<span class="op">=</span><span class="dv">20</span>, title_font_color<span class="op">=</span><span class="st">"darkred"</span>, xaxis_title<span class="op">=</span><span class="st">"Industry (NAICS2_NAME)"</span>,</span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"Skill Count"</span>, plot_bgcolor<span class="op">=</span><span class="st">"#FCE4EC"</span></span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>figf.show()</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>figf.write_image(<span class="st">"output/figuref.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
@@ -615,7 +616,7 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Skill Demand Analysis by Industry</a></p>
+<p><a href="output/figuref.svg">Skill Demand Analysis by Industry</a></p>
 <p>This stacked bar chart highlights the variation in skill demand across industries, with some sectors like “Professional, Scientific, and Technical Services” showing the highest counts. The pink color segments represent distinct skills, helping visualize which industries rely more heavily on specific capabilities.</p>
 </section>
 <section id="salary-analysis-by-onet-occupation-type-bubble-chart" class="level1" data-number="7">
@@ -638,25 +639,25 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 </ul></li>
 <li><strong>Explanation:</strong> Write two sentences about what the graph reveals.</li>
 </ul>
-<div id="cell-31" class="cell" data-execution_count="9">
+<div id="cell-32" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 7th question here</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.groupBy(<span class="st">"ONET_NAME"</span>).agg( expr(<span class="st">"percentile_approx(SALARY_FROM, 0.5)"</span>).alias(<span class="st">"Median_Salary"</span>),</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    expr(<span class="st">"count(*)"</span>).alias(<span class="st">"Job_Count"</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.toPandas()</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(pdf, x<span class="op">=</span><span class="st">"ONET_NAME"</span>, y<span class="op">=</span><span class="st">"Median_Salary"</span>, size<span class="op">=</span><span class="st">"Job_Count"</span>, title<span class="op">=</span><span class="st">"Salary Analysis by ONET Occupation Type"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>figg <span class="op">=</span> px.scatter(pdf, x<span class="op">=</span><span class="st">"ONET_NAME"</span>, y<span class="op">=</span><span class="st">"Median_Salary"</span>, size<span class="op">=</span><span class="st">"Job_Count"</span>, title<span class="op">=</span><span class="st">"Salary Analysis by ONET Occupation Type"</span>,</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"Median_Salary"</span>, color_continuous_scale<span class="op">=</span><span class="st">"Plasma"</span>, size_max<span class="op">=</span><span class="dv">50</span>,template<span class="op">=</span><span class="st">"nike_light_pink"</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>figg.show()</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>figg.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[Stage 22:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+<pre><code>                                                                                </code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Salary Analysis by ONET Occupation Type</a></p>
+<p><a href="output/figureg.svg">Salary Analysis by ONET Occupation Type</a></p>
 <p>The chart shows that Business Intelligence Analysts have a median salary of approximately 88k. This occupation also has a relatively high number of job postings, as reflected by the large bubble size.</p>
 </section>
 <section id="career-pathway-trends-sankey-diagram" class="level1" data-number="8">
@@ -679,7 +680,7 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 </ul></li>
 <li><strong>Explanation:</strong> Write two sentences about what the graph reveals.</li>
 </ul>
-<div id="cell-35" class="cell" data-execution_count="10">
+<div id="cell-36" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code for 8th question here</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.groupBy(<span class="st">"SOC_2021_2_NAME"</span>, <span class="st">"SOC_2021_3_NAME"</span>).agg(count(<span class="st">"*"</span>).alias(<span class="st">"transitions"</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> df1.toPandas()</span>
@@ -690,7 +691,7 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>pdf[<span class="st">"source_id"</span>] <span class="op">=</span> pdf[<span class="st">"SOC_2021_2_NAME"</span>].<span class="bu">map</span>(label_to_index)</span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>pdf[<span class="st">"target_id"</span>] <span class="op">=</span> pdf[<span class="st">"SOC_2021_3_NAME"</span>].<span class="bu">map</span>(label_to_index)</span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>figh <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    node<span class="op">=</span><span class="bu">dict</span>(</span>
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        pad<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        thickness<span class="op">=</span><span class="dv">25</span>,</span>
@@ -705,7 +706,7 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 <span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"rgba(255, 138, 101, 0.4)"</span></span>
 <span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>)])</span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>figh.update_layout(</span>
 <span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">"Career Pathway Trends by SOC Classification"</span>,</span>
 <span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(</span>
 <span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>        family<span class="op">=</span><span class="st">"Times New Romans"</span>,</span>
@@ -715,10 +716,10 @@ Among the classified postings, Remote and Hybrid Remote roles make up a small bu
 <span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">"#F6F6F6"</span>,</span>
 <span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">"#AAAAAA"</span></span>
 <span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>fig.write_image(<span class="st">"output/figure.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>figh.show()</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>figh.write_image(<span class="st">"output/figureh.svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_3069/534944027.py:5: FutureWarning:                              
+<pre><code>/tmp/ipykernel_1855/1956088013.py:5: FutureWarning:                             
 
 unique with argument that is not not a Series, Index, ExtensionArray, or np.ndarray is deprecated and will raise in a future version.
 </code></pre>
@@ -727,7 +728,7 @@ unique with argument that is not not a Series, Index, ExtensionArray, or np.ndar
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<p><a href="output/figure.svg">Career Pathway Trends</a></p>
+<p><a href="output/figureh.svg">Career Pathway Trends</a></p>
 <p>The Sankey diagram reveals a notable career transition from Computer and Mathematical Occupations to Mathematical Science Occupations. This indicates a strong progression pathway between these two SOC classifications, likely due to overlapping skill sets and domain relevance.</p>
 </section>
 
